@@ -1,0 +1,9 @@
+Any use of data from the seismic catalog should be cited. 
+The correct format for scientific citations is the following: 
+
+Beauval, C., Yepes, H., Palacios, P., Segovia, M., Alvarado, A., Font, Y., Aguilar, J., Troncoso, L. and Vaca, S.: An Earthquake Catalog for Seismic Hazard Assessment in Ecuador, Bulletin of the Seismological Society of America, 103(2A), 773–786, doi:10.1785/0120120270, 2013.
+For other type of credits, the following phrase is proposed, but some sort of credit should be given to the Instituto Geofísico for its work:
+
+El Catálogo para Análisis del Peligro sísmico en el Ecuador ha sido desarrollado por el Instituto Geofísico de la Escuela Politécnica Nacional con la cooperación del Instituto Francés para la Cooperación y Desarrollo, IRD. Los datos del catálogo están a disposición pública como parte de la labor del Servicio Nacional de Sismología y Vulcanología SENASV.
+
+El Instituto Geofísico deslinda cualquier responsabilidad por el uso que se puedan dar a estos datos.
