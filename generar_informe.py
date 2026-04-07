@@ -255,7 +255,7 @@ def construir_informe():
         'homogeneizado del Ecuador, elaborado por el Instituto Geofísico de la '
         'Escuela Politécnica Nacional (IGEPN) y documentado en la publicación de '
         'Beauval et al. (2013). El catálogo abarca el período comprendido entre '
-        '1901 y 2009, conteniendo 10.742 eventos sísmicos con magnitud Mw igual '
+        '1901 y 2009, conteniendo 10 742 eventos sísmicos con magnitud Mw igual '
         'o superior a 3.0, cuyas magnitudes fueron homogeneizadas a la escala de '
         'magnitud momento (Mw). A partir de estos datos se realizan análisis '
         'espaciales, estadísticos y de frecuencia que permiten caracterizar el '
@@ -269,14 +269,13 @@ def construir_informe():
     agregar_titulo(doc, '1. Análisis Espacial de Eventos Sísmicos')
 
     agregar_parrafo(doc,
-        'Para el análisis espacial se elaboró un mapa de dispersión de los '
+        'Para el análisis espacial se elaboró un mapa de calor de los '
         'eventos sísmicos registrados en el catálogo, utilizando la magnitud Mw '
         'como variable de referencia. Se diferenciaron tres rangos de magnitud: '
         'eventos con Mw mayor a 7 (representados en rojo con marcadores grandes), '
         'eventos con Mw entre 5 y 7 (en naranja con marcadores medianos) y '
         'eventos con Mw entre 4 y 5 (en amarillo con marcadores pequeños). Los '
-        'eventos con magnitud inferior a 3 fueron excluidos del análisis, tal '
-        'como lo establece el enunciado de la tarea.'
+        'eventos con magnitud inferior a 3 fueron excluidos del análisis.'
     )
 
     agregar_imagen(doc, 'literal1_mapa_sismico.png', ancho_cm=15)
@@ -292,7 +291,7 @@ def construir_informe():
         'interfaz de subducción constituye la fuente sismogénica más peligrosa '
         'del país. En la región interandina (Sierra) se observa una sismicidad '
         'moderada pero persistente, asociada al sistema de fallas activas que '
-        'atraviesa el callejón interandino. En total se registraron 2.581 eventos '
+        'atraviesa el callejón interandino. En total se registraron 2581 eventos '
         'con Mw entre 4 y 5, 534 eventos con Mw entre 5 y 7, y 22 eventos con '
         'Mw superior a 7.'
     )
@@ -300,8 +299,8 @@ def construir_informe():
     agregar_parrafo(doc,
         'Adicionalmente se generó un mapa de calor interactivo mediante la '
         'librería Folium, el cual permite una exploración dinámica de la '
-        'distribución espacial de los eventos sísmicos. Este mapa se entrega '
-        'como archivo HTML adjunto.'
+        'distribución espacial de los eventos sísmicos. Este mapa se genera '
+        'automáticamente al ejecutar el script de Python.'
     )
 
     # ==================== LITERAL 2 ====================
@@ -395,9 +394,8 @@ def construir_informe():
 
     agregar_parrafo(doc,
         'Se elaboró un histograma de frecuencias para los eventos sísmicos con '
-        'Mw igual o superior a 4.0, clasificados en siete intervalos de magnitud '
-        'definidos por el enunciado de la tarea: 4.0-4.5, 4.5-5.0, 5.0-5.5, '
-        '5.5-6.0, 6.0-6.5, 6.5-7.0 y mayores a 7.0.'
+        'Mw igual o superior a 4.0, clasificados en siete intervalos de magnitud: '
+        '4.0-4.5, 4.5-5.0, 5.0-5.5, 5.5-6.0, 6.0-6.5, 6.5-7.0 y mayores a 7.0.'
     )
 
     agregar_imagen(doc, 'literal3_histograma_magnitudes.png', ancho_cm=14)
@@ -408,10 +406,10 @@ def construir_informe():
         'El histograma muestra una distribución inversamente proporcional entre '
         'la magnitud y la frecuencia de eventos, lo cual es consistente con la '
         'ley de Gutenberg-Richter (log N = a - bM). El intervalo de 4.0 a 4.5 '
-        'concentra la mayor cantidad de eventos con 1.499 registros, lo que '
+        'concentra la mayor cantidad de eventos con 1499 registros, lo que '
         'representa el 47.7% del total de sismos con Mw igual o superior a 4.0. '
         'A medida que aumenta la magnitud, la frecuencia disminuye de forma '
-        'exponencial: 1.082 eventos en el rango 4.5-5.0, 325 en el rango '
+        'exponencial: 1082 eventos en el rango 4.5-5.0, 325 en el rango '
         '5.0-5.5, 103 en el rango 5.5-6.0, 60 en el rango 6.0-6.5, 46 en el '
         'rango 6.5-7.0, y apenas 22 eventos con magnitud superior a 7.0. Esta '
         'distribución refleja el comportamiento típico de una zona de alta '
@@ -425,7 +423,7 @@ def construir_informe():
 
     agregar_parrafo(doc,
         'Se calcularon las estadísticas descriptivas de las magnitudes de los '
-        '10.742 eventos sísmicos del catálogo. La magnitud promedio es de 3.69 '
+        '10 742 eventos sísmicos del catálogo. La magnitud promedio es de 3.69 '
         'Mw, la mediana es de 3.40 Mw y la desviación estándar es de 0.70. Se '
         'ajustó una distribución normal a los datos de magnitud mediante el '
         'método de máxima verosimilitud, obteniéndose los cuantiles P16 = 2.99 '
@@ -491,7 +489,7 @@ def construir_informe():
     )
 
     agregar_parrafo(doc,
-        'El Ecuador presenta una sismicidad elevada y sostenida, con 10.742 '
+        'El Ecuador presenta una sismicidad elevada y sostenida, con 10 742 '
         'eventos sísmicos registrados con Mw igual o superior a 3.0 en un '
         'período de 109 años, incluyendo 22 eventos de magnitud Mw igual o '
         'superior a 7.0. Esta actividad sísmica se asocia directamente con la '

@@ -7,21 +7,41 @@
 - **Periodo:** Primer Periodo 2026
 - **Repo GitHub:** https://github.com/devilS1n/Tarea1-Sismoresistente
 - **Fecha de inicio:** 2026-04-01
+- **Última actualización:** 2026-04-07
 
 ## Indicación especial del profesor
 - **Solo usar el Catálogo Homogeneizado hasta 2009** (mensaje del Ing. Rivera por WhatsApp: "por favor hagan hasta 2009"). No usar los catálogos 2010-2011 ni 2012-2025.
+
+## Estado del proyecto: COMPLETO - Listo para entregar
+
+### Entregables finales
+1. **`tarea1_sismoresistente.py`** — Script principal (entrega al profesor)
+2. **`Tarea1_DisenoSismorresistente_PabloBaez.pdf`** — Informe exportado a PDF (entrega al profesor)
+3. **`csv/CatalogoHomogenizado.txt`** — Datos del catálogo (incluir para que el profesor pueda ejecutar el script)
+
+### Carpeta de entrega
+```
+Baez_Pablo_Tarea1/
+├── tarea1_sismoresistente.py
+├── Tarea1_DisenoSismorresistente_PabloBaez.pdf   ← pendiente: exportar Word a PDF
+└── csv/
+    └── CatalogoHomogenizado.txt
+```
 
 ## Datos de entrada
 - **Archivo:** `csv/CatalogoHomogenizado.txt` (descargado del IGEPN el 2026-04-01)
 - **Formato:** CSV con comillas, 16 columnas
 - **Columnas clave:** `OBJECTID`, `ID`, `Fecha`, `Latitud`, `Longitud`, `Profundidad`, `Mw`, `AA` (año), `Mes`, `Dia`, `Hora`, `Minuto`, `Segundo`, `Catalogo`, `Fuente`, `Shape`
-- **Registros válidos:** 10.742 eventos (después de filtrar profundidad < 0)
+- **Registros totales:** 10,823
+- **Registros con profundidad negativa:** 81 (eliminados — todos IGEPN/FONT, 1997-2007, sismos muy superficiales con error de localización)
+- **Registros válidos:** 10,742 eventos (después de filtrar profundidad < 0)
 - **Período:** 1901 - 2009
 - **Rango Mw:** 3.0 - 8.35
 - **Rango Profundidad:** 0 - 418 km
 - **Magnitud ya homogeneizada a Mw** — no requiere conversión de tipos de magnitud
 - **Referencia:** Beauval, C., et al. (2013). "An Earthquake Catalog for Seismic Hazard Assessment in Ecuador." BSSA, 103(2A), 773-786.
-- **Archivo complementario:** `csv/complementhistoriqueJune2013Tab.txt` — eventos históricos desde 1587 (no usado actualmente, solo el principal)
+- **Referencia de cita obligatoria:** archivo `csv/DataUse.txt` dentro del RAR descargado del IGEPN
+- **Archivo complementario:** `csv/complementhistoriqueJune2013Tab.txt` — eventos históricos desde 1587 (no usado, solo el catálogo principal)
 
 ## Estructura de archivos
 
@@ -32,7 +52,9 @@ TAREA 1/
 ├── Tarea1_DisenoSismorresistente_PabloBaez.docx  # Informe Word generado
 ├── Tarea 1 - Diseño Sismorresistente.pdf          # Enunciado original del profesor
 ├── Disclaimer_IGEPN.pdf
+├── CLAUDE.md                    # Este archivo
 ├── .gitignore                   # Excluye .rar, __pycache__
+├── Baez_Pablo_Tarea1/           # Carpeta de entrega al profesor
 ├── csv/
 │   ├── CatalogoHomogenizado.txt           # DATOS PRINCIPALES
 │   ├── complementhistoriqueJune2013Tab.txt
@@ -55,6 +77,7 @@ TAREA 1/
 - **6 funciones literales:** `literal_1_mapa_calor()` a `literal_6_conclusiones()`
 - **Cada función:** imprime resultados en consola + genera/guarda gráfico PNG + muestra con plt.show()
 - **Backend matplotlib:** TkAgg (ventanas emergentes en VS Code)
+- **Encoding:** todos los print() usan caracteres ASCII para compatibilidad con terminales Windows (cp1252). Los gráficos de matplotlib sí usan Unicode (μ, σ, °) porque matplotlib lo maneja internamente.
 
 ### Librerías instaladas (Python 3.14)
 - pandas 2.3.3, numpy 2.4.1, matplotlib 3.10.8, scipy 1.17.1
@@ -72,10 +95,18 @@ TAREA 1/
 | 5 | `literal_5_estadisticas_profundidad(df)` | Curva normal + líneas verticales | P16 se limita a >= 0 (profundidad no puede ser negativa). Mismo formato que literal 4. |
 | 6 | `literal_6_conclusiones(df)` | Solo texto en consola | 6 conclusiones técnicas sobre sismicidad y peligro sísmico. |
 
+### Comentarios en el código
+- **Estilo propio del estudiante:** comentarios cortos, informales, que muestran decisiones propias
+- Antes de cada función: `# Literal X: [resumen de lo que pide la tarea]`
+- Dentro del código solo donde hay decisión no obvia (4-5 comentarios en todo el script)
+- Sin barras decorativas, sin citas APA, sin docstrings largos
+- Sin caracteres Unicode en print() (compatibilidad cp1252 Windows)
+
 ### Resultados estadísticos clave
-- **Magnitudes:** Media=3.69, Mediana=3.40, σ=0.70, P16=2.99, P84=4.38
-- **Profundidades:** Media=40.2 km, Mediana=18.2 km, σ=49.4 km, P16=0.0 km, P84=89.3 km
-- **Distribución por rangos:** Mw>7: 22 | Mw 5-7: 534 | Mw 4-5: 2581 | Mw 3-4: 7605
+- **Magnitudes:** Media=3.69, Mediana=3.40, Desv.Est.=0.70, P16=2.99, P84=4.38
+- **Profundidades:** Media=40.2 km, Mediana=18.2 km, Desv.Est.=49.4 km, P16=0.0 km (ajustado de -8.9), P84=89.3 km
+- **Distribución por rangos (Mw>=4):** >7: 22 | 5-7: 534 | 4-5: 2581 | Total: 3137
+- **Total con Mw>=3:** 10,742 eventos
 
 ## Script informe: generar_informe.py
 
@@ -90,6 +121,31 @@ TAREA 1/
 - Referencias APA 7 con sangría francesa
 - Genera: `Tarea1_DisenoSismorresistente_PabloBaez.docx`
 
+### Correcciones aplicadas al informe (2026-04-07)
+1. "mapa de dispersión" → "mapa de calor" (usar terminología del profesor)
+2. Eliminado "tal como lo establece el enunciado de la tarea" (no referenciar el enunciado en un informe)
+3. "Este mapa se entrega como archivo HTML adjunto" → "se genera automáticamente al ejecutar el script"
+4. Eliminado "definidos por el enunciado de la tarea"
+5. Números con punto de miles (1.499, 10.742) → sin punto o con espacio (1499, 10 742) para evitar confusión con decimales
+
+## Verificación de literales (2026-04-07)
+
+Todos los literales fueron verificados contra el enunciado de la tarea:
+
+| Literal | Requisito | Estado |
+|---------|-----------|--------|
+| 1 | Mapa de calor con rangos Mw>7, 5-7, >4 + excluir Mw<3 | APROBADO |
+| 2 | Evento más antiguo + mayor magnitud (año, ubicación, provincia) + top eventos + comentarios | APROBADO |
+| 3 | Histograma 7 intervalos (4-4.5 a >7) + interpretación | APROBADO |
+| 4 | Media, mediana, desv.est. + curva normal + líneas P16, promedio, P84 etiquetadas + interpretación | APROBADO |
+| 5 | Media, mediana, desv.est. profundidades + curva normal + líneas P16, promedio, P84 + interpretación | APROBADO |
+| 6 | Conclusiones técnicas sobre sismicidad + relación con peligro sísmico | APROBADO |
+
+### Requisitos de entrega verificados
+- Script Python con lectura, procesamiento, cálculos y gráficos: OK
+- Informe escrito con resultados, figuras e interpretaciones: OK
+- Gráficos con título central, nombre de ejes y leyenda: OK
+
 ## Posibles mejoras pendientes
 - Agregar la relación de Gutenberg-Richter (log N = a - bM) como análisis complementario
 - Mejorar la determinación de provincia del evento (actualmente aproximada por coordenadas)
@@ -100,3 +156,4 @@ TAREA 1/
 ## Formato de entrega al profesor
 1. **Archivo .py** → el script principal
 2. **Archivo .pdf** → el informe Word exportado a PDF desde Word (Archivo → Guardar como → PDF)
+3. **Carpeta csv/** → con el catálogo para que el profesor pueda ejecutar el script
